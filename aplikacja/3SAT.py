@@ -91,7 +91,7 @@ def solve(clauses, n_vars, assignments):
                     if final: return final
         return None
     
-def generate_instance(n, m, filename="przyklad.txt"):
+def generate_example(n, m, filename="przyklad.txt"):
     with open(filename, 'w') as f:
         f.write(f"{n} {m}\n")
         for _ in range(m):
@@ -102,6 +102,9 @@ def generate_instance(n, m, filename="przyklad.txt"):
 
 def main():
     input_file = "przyklad.txt"
+    if not os.path.exists(input_file):
+        print(f"Błąd: Nie znaleziono {input_file}. Generuję przykładową instancję...")
+        generate_example(15, 60, input_file)
     n_vars, n_clauses, clauses = load(input_file)
 
     if n_vars is None:
