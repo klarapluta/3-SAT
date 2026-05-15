@@ -1,5 +1,6 @@
 import os
-C:\Users\DELL\Desktop\Studia\MCB\Semestr_II\Algorytmy_Zaawansowane\3-SAT
+import random
+import time
 
 # funkcja do wczytania danych wejściowych
 def load(data):
@@ -89,6 +90,14 @@ def solve(clauses, n_vars, assignments):
                     final = solve(res3, n_vars, new_assign)
                     if final: return final
         return None
+    
+def generate_instance(n, m, filename="przyklad.txt"):
+    with open(filename, 'w') as f:
+        f.write(f"{n} {m}\n")
+        for _ in range(m):
+            vars_sample = random.sample(range(1, n + 1), 3)
+            clause = [v if random.random() > 0.5 else -v for v in vars_sample]
+            f.write(f"{clause[0]} {clause[1]} {clause[2]}\n")
 
 
 def main():
