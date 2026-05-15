@@ -1,2 +1,3 @@
 Status: ROZWI¥ZYWALNE
-Rozwi¹zanie: 1 0 1 1 0 1 1 1 0 0 1 0 1 0 1
+Rozwi¹zanie: 0 0 1 1 0 0 1 0 0 1 0 0 1 0 1
+Czas wykonania: 0.0040 s
