@@ -1,13 +1,13 @@
 \documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{polski}
 \usepackage{graphicx} 
-\usepackage{microtype} 
 \usepackage{geometry}
 \geometry{margin=2.5cm}
 \usepackage{setspace}
 \onehalfspacing
-\usepackage[utf8]{inputenc}
-\usepackage[MeX]{polski}
-\usepackage[T1]{fontenc}
 \usepackage{amsmath, amssymb}
 \usepackage[hidelinks]{hyperref}
 \usepackage{amsthm}
@@ -28,17 +28,14 @@
 
 \maketitle
 
-
 \section{Zmiany względem dokumentacji wstępnej}
-Dokumentacja wstępna przedstawiała podstawową wersję aplikacji, która przyjmuję formułę w postaci 3-CNF, szuka rozwiązania jednocześnie ją upraszczając. Na koniec zwraca informację, czy jest ona spełnialna oraz wyświetla rozwiązanie, jeżeli ono istnieje. Ostateczna wersja aplikacji, nie różni się znacznie od tego, co było przedstawione w dokumentacji wstępnej. Z dodatkowych funkcjonalności, między innymi pojawił się generator pliku wejściowego. Jeżeli w aplikacja nie widzi pliku wejściowego, to sama generuje taki plik dla losowej liczby zmiennych ($n \in \langle 5, 40 \rangle$) i losowej liczby klauzul ($m\in\langle 10, 200\rangle$). Program zwraca również czas jaki był potrzebny, żeby znaleźć rozwiązanie.
-
+Dokumentacja wstępna przedstawiała podstawową wersję aplikacji, która przyjmuje formułę w postaci 3-CNF, szuka rozwiązania jednocześnie ją upraszczając. Na koniec zwraca informację, czy jest ona spełnialna oraz wyświetla rozwiązanie, jeżeli ono istnieje. Ostateczna wersja aplikacji nie różni się znacznie od tego, co było przedstawione w dokumentacji wstępnej. Z dodatkowych funkcjonalności pojawił się m.in. generator pliku wejściowego. Jeżeli aplikacja nie widzi pliku wejściowego, to sama generuje taki plik dla losowej liczby zmiennych ($n \in \langle 5, 40 \rangle$) i losowej liczby klauzul ($m \in \langle 10, 200 \rangle$). Program zwraca również czas, jaki był potrzebny na znalezienie rozwiązania.
 
 \section{Opis programu dla użytkownika}
 
 Użytkownik ma dwie możliwości skorzystania z aplikacji. Może sprawdzić spełnialność konkretnej lub losowo wygenerowanej formuły. \newline
 Aby sprawdzić rozwiązanie dla wybranej postaci 3-CNF, należy ją wpisać w pliku \textit{przyklad.txt}. W pierwszej linii mamy najpierw liczby, które określają odpowiednio liczbę zmiennych oraz liczbę klauzul. Następnie każda linijka odpowiada jednej klauzuli, gdzie $n$ oznacza $n$-tą zmienną, a $-n$ jej negację. \newline
-Jeżeli użytkownik chce sprawdzić spełnialność losowej formuły, to należy usunąć z folderu plik \textit{przyklad.txt}. Po uruchomieniu aplikacji program wygeneruje plik z przykładową instancją. Wylosowaną formułę będzie można sprawdzić w pliku \textit{przyklad.txt}.\newline
-Aby sprawdzić wynik należy otworzyć plik \textit{wynik.txt}. Tam użytkownik może sprawdzić, czy formuła jest spełnialna, przykładowe rozwiązanie, czyli przypisanie wartości logicznej do każdej zmiennej oraz czas jaki program potrzebował na rozwiązanie tej formuły lub dojście do tego, że jest ona nierozwiązywalna.
-
+Jeżeli użytkownik chce sprawdzić spełnialność losowej formuły, należy usunąć z folderu plik \textit{przyklad.txt}. Po uruchomieniu aplikacji program wygeneruje plik z przykładową instancją. Wylosowaną formułę będzie można sprawdzić w pliku \textit{przyklad.txt}.\newline
+Aby sprawdzić wynik, należy otworzyć plik \textit{wynik.txt}. Tam użytkownik może sprawdzić, czy formuła jest spełnialna, poznać przykładowe rozwiązanie (przypisanie wartości logicznej do każdej zmiennej) oraz czas, jaki program potrzebował na rozwiązanie tej formuły lub dojście do tego, że jest ona nierozwiązywalna.
 
 \end{document}

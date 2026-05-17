@@ -104,7 +104,9 @@ def main():
     input_file = "przyklad.txt"
     if not os.path.exists(input_file):
         print(f"Błąd: Nie znaleziono {input_file}. Generuję przykładową instancję...")
-        generate_example(15, 60, input_file) 
+        n = random.randint(5, 40)  # liczba zmiennych
+        m = random.randint(10, 200)  # liczba klauzul
+        generate_example(n, m, input_file) 
     n_vars, n_clauses, clauses = load(input_file)
 
     if n_vars is None:
@@ -116,12 +118,12 @@ def main():
 
     with open("wynik.txt", "w") as f:
         if result:
-            f.write("Status: ROZWIĄZYWALNE\n")
+            f.write("Status: ROZWIAZYWALNE\n")
             res_str = " ".join(str(result[i]) for i in range(1, n_vars + 1))
-            f.write(f"Rozwiązanie: {res_str}\n")
+            f.write(f"Rozwiazanie: {res_str}\n")
             f.write(f"Czas wykonania: {end_time - start_time:.4f} s\n")
         else:
-            f.write("Status: NIEROZWIĄZYWALNE\n")
+            f.write("Status: NIEROZWIAZYWALNE\n")
             f.write(f"Czas wykonania: {end_time - start_time:.4f} s\n")
 
 
