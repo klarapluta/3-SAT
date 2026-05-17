@@ -127,5 +127,31 @@ def main():
             f.write(f"Czas wykonania: {end_time - start_time:.4f} s\n")
 
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+#    main()
+
+import random
+
+def generate_10_instances(n, m):
+    for i in range(1, 11):
+        filename = f"test_{i}.txt"
+        with open(filename, 'w') as f:
+            # Pierwsza linia: liczba zmiennych i liczba klauzul
+            f.write(f"{n} {m}\n")
+            
+            # Generowanie m klauzul
+            for _ in range(m):
+                # Losujemy dokładnie 3 różne zmienne od 1 do n
+                vars_sample = random.sample(range(1, n + 1), 3)
+                
+                # Dla każdej zmiennej losujemy znak (pozytywny lub negacja)
+                clause = [v if random.random() > 0.5 else -v for v in vars_sample]
+                
+                # Zapisujemy klauzulę do pliku rozdzieloną spacjami
+                f.write(f"{clause[0]} {clause[1]} {clause[2]}\n")
+                
+        print(f"Wygenerowano: {filename}")
+
+# --- PRZYKŁAD UŻYCIA ---
+# Wywołanie dla n=30 zmiennych i m=128 klauzul (punkt krytyczny)
+generate_10_instances(n=10, m=30)
