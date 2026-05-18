@@ -64,6 +64,14 @@ Dla każdego zestawu parametrów ($n$, $m$) przeprowadzono 10 testów, a następ
 \end{tabular}
 \caption{Wyniki testów wydajnościowych dla wybranych parametrów $n$ oraz $m$.}
 \end{table}
+Wyniki jednoznacznie potwierdzają wykładniczy charakter problemu 3-SAT. Zwiększenie liczby zmiennych ma najbardziej znaczący wpłyp na czas obliczeń. Dodatkowo przy niskim stosunku liczby klauzul do liczby zmienych ($m/n$) czas działania jest znacznie krótszy, co jest zgodne z oczekiwaniami, ponieważ formuły o niskim stosunku $m/n$ są zazwyczaj łatwiejsze do rozwiązania. W miarę zwiększania liczby klauzul, czas działania rośnie, co również jest zgodne z teorią, ponieważ większa liczba klauzul zwiększa złożoność problemu. \newline
+Analiza danych dla $n=30$ oraz $n=40$ pokazuje, że czas działania algorytmu nie rośnie liniowo wraz z liczbą klauzul. Od pewnego momentu czas ten się skraca, wynika to z tego, że przy dużej liczbie klauzul prostsze jest upraszczanie poprzez usuwanie sprzeczności.\newline
+Podczas testów nie odnotowano awarii programu ani błędnych wyników. Algorytm poprawnie identyfikował status "NIEROZWIĄZYWALNE" dla formuł, które nie mają rozwiązania, oraz zwracał poprawne rozwiązania dla formuł spełnialnych. \newline
 
-
+\section{Podział prac}
+\begin{itemize}
+    \item Klaudia Buczek: testy, dokumentacja końcowa.
+    \item Klara Pluta: implementacja generatora instancji, dokumentacja wstępna.
+    \item Gabriela Warchoł: przygotowanie wersji beta aplikacji
+\end{itemize}
 \end{document}
