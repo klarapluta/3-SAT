@@ -1,2 +1,0 @@
-Status: NIEROZWIAZYWALNE
-Czas wykonania: 0.0079 s
