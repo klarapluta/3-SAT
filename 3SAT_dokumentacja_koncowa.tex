@@ -33,10 +33,20 @@ Dokumentacja wstępna przedstawiała podstawową wersję aplikacji, która przyj
 
 \section{Opis programu dla użytkownika}
 
-Użytkownik ma dwie możliwości skorzystania z aplikacji. Może sprawdzić spełnialność konkretnej lub losowo wygenerowanej formuły. \newline
-Aby sprawdzić rozwiązanie dla wybranej postaci 3-CNF, należy ją wpisać w pliku \textit{przyklad.txt}. W pierwszej linii mamy najpierw liczby, które określają odpowiednio liczbę zmiennych oraz liczbę klauzul. Następnie każda linijka odpowiada jednej klauzuli, gdzie $n$ oznacza $n$-tą zmienną, a $-n$ jej negację. \newline
-Jeżeli użytkownik chce sprawdzić spełnialność losowej formuły, należy usunąć z folderu plik \textit{przyklad.txt}. Po uruchomieniu aplikacji program wygeneruje plik z przykładową instancją. Wylosowaną formułę będzie można sprawdzić w pliku \textit{przyklad.txt}.\newline
-Aby sprawdzić wynik, należy otworzyć plik \textit{wynik.txt}. Tam użytkownik może sprawdzić, czy formuła jest spełnialna, poznać przykładowe rozwiązanie (przypisanie wartości logicznej do każdej zmiennej) oraz czas, jaki program potrzebował na rozwiązanie tej formuły lub dojście do tego, że jest ona nierozwiązywalna.
+Aplikacja zawiera menu tekstowe, które krok po kroku pokazuje użykownikowi, co ma zrobić. Uruchomienie skryptu odbywa się za pomocą standardowej komendy w terminalu:
+\begin{verbatim}python 3SAT.py\end{verbatim}
+po uruchomieniu programu użytkownik ma do wyboru trzy opcje:
+\begin{itemize}
+    \item Rozwiąż formułę z pliku - program szuka pliku "przyklad.txt" w katalogu, w którym znajduje się skrypt. Jeżeli plik istnieje, to program go wczytuje i próbuje znaleźć rozwiązanie. Jeżeli plik nie istnieje, to program generuje losową formułę i zapisuje ją do tego pliku, a następnie próbuje znaleźć rozwiązanie.
+    \item Wygeneruj nową losową formułę (podaj własne parametry) - użytkownik jest proszony o podanie liczby zmiennych ($n$) oraz liczby klauzul ($m$). Program generuje losową formułę 3-CNF zgodnie z podanymi parametrami i zapisuje ją do pliku "przyklad.txt", a następnie próbuje znaleźć rozwiązanie.
+    \item Wygeneruj nową losową formułę (losowe parametry) - program losowo wybiera liczbę zmiennych ($n \in \langle 5, 40 \rangle$) oraz liczbę klauzul ($m \in \langle 10, 200 \rangle$), generuje losową formułę 3-CNF zgodnie z tymi parametrami i zapisuje ją do pliku "przyklad.txt", a następnie próbuje znaleźć rozwiązanie.
+\end{itemize}
+
+\subsection{Format danych wejściowych i wyjściowych}
+Format plików pozostał zgodny z założeniami projektowymi. W pliku wejściowym pierwsza linia określa odpowiednio liczbę zmiennych oraz liczbę klauzul. Każda kolejna linia odpowiada jednej klauzuli, gdzie liczba dodatnia $n$ oznacza $n$-tą zmienną, a liczba ujemna $-n$ jej negację. 
+
+Plik wyjściowy zawiera czytelny nagłówek ze statusem (ROZWIĄZALNE / NIEROZWIĄZALNE), przypisanie wartości logicznych (0 lub 1) do poszczególnych zmiennych (w przypadku powodzenia) oraz dokładny czas, jaki program potrzebował na zakończenie obliczeń.
+
 
 \section{Testy i wnioski}
 W ramach testów zbadano czas działania algorytmu dla różnej liczby zmiennych ($n$) oraz różnej liczby klauzul ($m$).
@@ -67,6 +77,7 @@ Dla każdego zestawu parametrów ($n$, $m$) przeprowadzono 10 testów, a następ
 Wyniki jednoznacznie potwierdzają wykładniczy charakter problemu 3-SAT. Zwiększenie liczby zmiennych ma najbardziej znaczący wpłyp na czas obliczeń. Dodatkowo przy niskim stosunku liczby klauzul do liczby zmienych ($m/n$) czas działania jest znacznie krótszy, co jest zgodne z oczekiwaniami, ponieważ formuły o niskim stosunku $m/n$ są zazwyczaj łatwiejsze do rozwiązania. W miarę zwiększania liczby klauzul, czas działania rośnie, co również jest zgodne z teorią, ponieważ większa liczba klauzul zwiększa złożoność problemu. \newline
 Analiza danych dla $n=30$ oraz $n=40$ pokazuje, że czas działania algorytmu nie rośnie liniowo wraz z liczbą klauzul. Od pewnego momentu czas ten się skraca, wynika to z tego, że przy dużej liczbie klauzul prostsze jest upraszczanie poprzez usuwanie sprzeczności.\newline
 Podczas testów nie odnotowano awarii programu ani błędnych wyników. Algorytm poprawnie identyfikował status "NIEROZWIĄZYWALNE" dla formuł, które nie mają rozwiązania, oraz zwracał poprawne rozwiązania dla formuł spełnialnych. \newline
+Na podstawie przeprowadzonych testów oraz analizy teoretycznej złożoności obliczeniowej, przyjmując kryterium akceptowalnego czasu oczekiwania na poziomie około 10 sekund, jako ostateczną rozsądną granicę wydajności zaimplementowanej aplikacji przyjęto \textbf{$n = 50$ zmiennych}.
 
 \section{Podział prac}
 \begin{itemize}
