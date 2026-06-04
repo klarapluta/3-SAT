@@ -101,22 +101,55 @@ def generate_example(n, m, filename="przyklad.txt"): # m liczba klauzul, n liczb
 
 
 def main():
+    print("=== PROGRAM 3-SAT ===")
+    print("Wybierz tryb działania:")
+    print("1 - Rozwiąż formułę z pliku")
+    print("2 - Wygeneruj nową losową formułę (podaj własne parametry)")
+    print("3 - Wygeneruj nową losową formułę (losowe parametry)")
+    tryb = input("Wybór [domyślnie 1]: ").strip()
     input_file = "przyklad.txt"
-    if not os.path.exists(input_file):
-        print(f"Błąd: Nie znaleziono {input_file}. Generuję przykładową instancję...")
+    output_file = "wynik.txt"
+
+    if tryb == "3":
         n = random.randint(5, 40)  # liczba zmiennych
         m = random.randint(10, 200)  # liczba klauzul
-        generate_example(n, m, input_file) 
+        print(f"Generowanie losowej instancji: zmienne={n}, klauzule={m} do pliku {input_file}")
+        generate_example(n, m, input_file)
+    elif tryb == "2":
+        n_input = input("Podaj liczbę zmiennych (n): ").strip()
+        m_input = input("Podaj liczbę klauzul (m): ").strip()
+        n = int(n_input) if n_input.isdigit() else random.randint(5, 40)
+        m = int(m_input) if m_input.isdigit() else random.randint(10, 200)
+        print(f"Generuję formułę do pliku '{input_file}'...")
+        generate_example(n, m, input_file)
+        output_file = input("Podaj nazwę pliku wyjściowego (domyślnie 'wynik.txt'): ").strip() or "wynik.txt"
+        if not output_file:
+            output_file = "wynik.txt"
+    else:    
+        input_file = input("Podaj nazwę pliku wejściowego (domyślnie 'przyklad.txt'): ").strip() or "przyklad.txt"
+        if not input_file:
+            input_file = "przyklad.txt"
+        output_file = input("Podaj nazwę pliku wyjściowego (domyślnie 'wynik.txt'): ").strip() or "wynik.txt"
+        if not output_file:
+            output_file = "wynik.txt"
+    if not os.path.exists(input_file):
+        if input_file == "przyklad.txt":
+            print(f"Błąd: Nie znaleziono {input_file}. Generuję przykładową instancję...")
+            n = random.randint(5, 40)  # liczba zmiennych
+            m = random.randint(10, 200)  # liczba klauzul
+            generate_example(n, m, input_file) 
+        else:
+            print(f"Błąd: Nie znaleziono pliku {input_file}")
+            return
     n_vars, n_clauses, clauses = load(input_file)
-
     if n_vars is None:
-        print(f"Błąd: Nie znaleziono pliku {input_file}")
+        print(f"Błąd: Nie można wczytać danych z {input_file}")
         return
     start_time = time.time()
     result = solve(clauses, n_vars, {})
     end_time = time.time()
 
-    with open("wynik.txt", "w") as f:
+    with open(output_file, "w") as f:
         if result:
             f.write("Status: ROZWIAZYWALNE\n")
             res_str = " ".join(str(result[i]) for i in range(1, n_vars + 1))
