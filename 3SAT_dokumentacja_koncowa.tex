@@ -37,8 +37,8 @@ Aplikacja zawiera menu tekstowe, które krok po kroku pokazuje użykownikowi, co
 \begin{verbatim}python 3SAT.py\end{verbatim}
 po uruchomieniu programu użytkownik ma do wyboru trzy opcje:
 \begin{itemize}
-    \item Rozwiąż formułę z pliku - program szuka pliku "przyklad.txt" w katalogu, w którym znajduje się skrypt. Jeżeli plik istnieje, to program go wczytuje i próbuje znaleźć rozwiązanie. Jeżeli plik nie istnieje, to program generuje losową formułę i zapisuje ją do tego pliku, a następnie próbuje znaleźć rozwiązanie.
-    \item Wygeneruj nową losową formułę (podaj własne parametry) - użytkownik jest proszony o podanie liczby zmiennych ($n$) oraz liczby klauzul ($m$). Program generuje losową formułę 3-CNF zgodnie z podanymi parametrami i zapisuje ją do pliku "przyklad.txt", a następnie próbuje znaleźć rozwiązanie.
+    \item Rozwiąż formułę z pliku - program pyta o nazwę pliku wejściowego. Jeżeli nazwa nie zostanie podana, lub będzie błędna, to program wygeneruje losową instancję i zapisze ją w pliku "przyklad.txt". Następnie program zapyta o nazwę pliku wyjściowego. Analogicznie, jeżeli nazwa pliku wyjściowego nie zostanie podana, to program zapisze rozwiązanie do pliku "wynik.txt". Na koniec program próbuje znaleźć rozwiązanie dla tej formuły.
+    \item Wygeneruj nową losową formułę (podaj własne parametry) - użytkownik jest proszony o podanie liczby zmiennych ($n$) oraz liczby klauzul ($m$). Program generuje losową formułę 3-CNF zgodnie z podanymi parametrami i zapisuje ją do pliku "przyklad.txt". W tym wariancie użytkownik może również podać nazwę pliku wyjściowego, do którego zostanie zapisane rozwiązanie. Jeżeli nazwa pliku wyjściowego nie zostanie podana, to program zapisze rozwiązanie do pliku "wynik.txt". Na koniec program próbuje znaleźć rozwiązanie dla tej formuły.
     \item Wygeneruj nową losową formułę (losowe parametry) - program losowo wybiera liczbę zmiennych ($n \in \langle 5, 40 \rangle$) oraz liczbę klauzul ($m \in \langle 10, 200 \rangle$), generuje losową formułę 3-CNF zgodnie z tymi parametrami i zapisuje ją do pliku "przyklad.txt", a następnie próbuje znaleźć rozwiązanie.
 \end{itemize}
 
